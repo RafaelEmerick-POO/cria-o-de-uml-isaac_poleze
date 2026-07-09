@@ -2,11 +2,11 @@
 
 ## 1. Requisito resumido
 
-Escreva aqui um resumo curto do problema em `5` a `8` linhas.
+O sistema do laboratório deve controlar equipamentos utilizados em ensaios e os sensores de temperatura associados a eles. Cada equipamento possui identificação, descrição e estado operacional. Os sensores registram leituras de temperatura em tempo real. Quando um equipamento necessita de verificação metrológica, uma ordem de calibração é criada para registrar o processo. Cada ordem possui data, status e um técnico responsável pela execução da calibração. O objetivo do sistema é organizar e rastrear essas informações de forma estruturada.
 
 ## 2. Link do Mermaid Live
 
-Cole aqui o link do diagrama validado no editor online.
+Não utilizado.
 
 ## 3. Diagrama final em Mermaid
 
@@ -28,6 +28,7 @@ classDiagram
 
     class OrdemCalibracao {
         -codigo: string
+        -data: string
         -status: string
         +abrir() void
         +fechar() void
@@ -46,20 +47,25 @@ classDiagram
 
 ## 4. Justificativa das relacoes
 
-Explique, em frases curtas:
+- SensorTemperatura herda de Equipamento para reutilizar atributos e comportamentos básicos, adicionando o controle de temperatura.
 
-- por que houve generalizacao ou realizacao;
-- por que houve agregacao ou composicao;
-- por que a cardinalidade foi escolhida;
-- por que as classes fazem sentido no dominio.
+- Equipamento possui OrdemCalibracao porque um equipamento pode passar por diversas calibrações ao longo de sua vida útil.
+
+- OrdemCalibracao está associada a Tecnico porque cada ordem deve possuir um técnico responsável pela execução da calibração.
 
 ## 5. Linguagem escolhida
 
-Marque a trilha usada:
-
 - [ ] C++
-- [ ] Python
+- [x] Python
 
 ## 6. Evidencias de execucao
 
-Cole aqui a saida do terminal, prints ou observacoes da execucao.
+Programa executado com sucesso utilizando Python.
+
+Saída obtida:
+
+[Equipamento] EQ-01 - Agitador principal - ativo=True
+[SensorTemperatura] TT-01 - valorAtual=23.5
+[SensorTemperatura] TT-01 - valorAtual=24.2
+
+Foi verificada a criação dos objetos, exibição dos dados e atualização da leitura do sensor.
