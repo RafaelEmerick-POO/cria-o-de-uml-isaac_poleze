@@ -1,6 +1,3 @@
-from equipamento import Equipamento
-
-
 class SensorTemperatura(Equipamento):
     def __init__(self, tag, descricao, ativo, valor_atual):
         super().__init__(tag, descricao, ativo)
