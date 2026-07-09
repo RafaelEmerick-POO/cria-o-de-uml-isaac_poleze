@@ -1,16 +1,13 @@
 from equipamento import Equipamento
-from sensor_temperatura import SensorTemperatura
 
 
-def main():
-    agitador = Equipamento("EQ-01", "Agitador principal", True)
-    sensor = SensorTemperatura("TT-01", "Sensor do tanque", True, 23.5)
+class SensorTemperatura(Equipamento):
+    def __init__(self, tag, descricao, ativo, valor_atual):
+        super().__init__(tag, descricao, ativo)
+        self._valor_atual = valor_atual
 
-    agitador.exibir_resumo()
-    sensor.exibir_resumo()
-    sensor.atualizar_leitura(24.2)
-    sensor.exibir_resumo()
+    def atualizar_leitura(self, novo_valor):
+        self._valor_atual = novo_valor
 
-
-if __name__ == "__main__":
-    main()
+    def exibir_resumo(self):
+        print(f"[SensorTemperatura] {self.tag} - valorAtual={self._valor_atual}")
